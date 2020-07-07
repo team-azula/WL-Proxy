@@ -1,1 +1,1 @@
-# WL-Proxy
+# anthony-ha-proxy

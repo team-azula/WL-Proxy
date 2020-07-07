@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Google Play Store App Page Proxy</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.no-icons.min.css" rel="stylesheet">
+    <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="style.css">
+  </head>
+  <body>
+    <div id='combined'>
+      <div id='appInfo'></div>
+      <div id='carousel'></div>
+      <div id='review'></div>
+      <div id='similar1'></div>
+    </div>
+    <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <script src="http://localhost:3004/bundle.js"></script>
+    <script src="http://localhost:3003/bundle.js"></script>
+    <script src="http://localhost:3002/bundle.js"></script>
+    <script src="http://localhost:3001/dist/bundle.js"></script>
+    <script>
+      let url = new URL(window.location);
+      let params = new URLSearchParams(url.search);
+      let id = params.get('id')
+      ReactDOM.render(
+        React.createElement(App1, {id}, null),
+        document.getElementById('appInfo')
+      )
+      ReactDOM.render(
+        React.createElement(App0, {id}, null),
+        document.getElementById('carousel')
+      )
+      ReactDOM.render(
+        React.createElement(Review, {id}, null),
+        document.getElementById('review')
+      )
+      ReactDOM.render(
+        React.createElement(App, {id}, null),
+        document.getElementById('similar1')
+      )
+    </script>
+  </body>
+</html>

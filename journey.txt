@@ -1,0 +1,55 @@
+(3/24/2020)
+
+**make sure to start up each service's server and the proxy server**
+
+-initialized repo with a standard package.json (npm init) then created files for server and client side and added a .gitignore
+
+-created a basic html page for server to serve
+
+-created a server that staticly serves the html page
+
+-had to refactor the way my service was sending the GET request to specify the PORT and this caused CORS issue so I had to add a script in the server index.js file to headers
+
+-also had to refactor my service to be able to render a react component without JSX to allow us to specify a specific input ID
+  -used ReactDOM.render(
+        React.createElement(App1, {id: '1'}, null),
+        document.getElementById('root')
+        )
+  -^ this came with issues because it was saying App1 was not defined when we took the ReactDOM.render out of the index.jsx file because of how webpack compiles the files
+  - to solve this you have to add the component to the global scope in this case was window
+
+-render my service to proxy server
+  -make sure to add the React and ReactDOM scripts to html file
+  -add a script tag to grab the bundle.js file from my service's server
+  -use ReactDOM.render(
+        React.createElement(App1, {id: (any id)}, null),
+        document.getElementById('root')
+        )
+  -because it only grabbed the bundle.js file, it did not come with the CSS stylesheet of my service, so I copied my stylesheet into a stylesheet for my proxy.
+  -depending on order of CSS style sheets tags in html file, the last one will override any overlapping code of previous sheets
+
+(3/25/2020)
+
+-render my group's services to proxy server
+  -essentially the same steps for everyone's as I did for my my service.
+  -only thing to keep an eye out for are any overlapping classNames that might impact each other when working with CSS.
+  -also if one component was not able to render, it would stop the rendering of anything after it.
+  -was able to grab the same data based on an input ID for everyone's service.
+
+-style the combined version of all of our services to look like the google play store app page
+  -used css grid as I did in my service and it made it simple to be able to style the way I wanted the page to look like
+  -setting the height and width of each cell, auto will make it the size of the contents inside, very helpful for the rows in this project.
+
+(3/27/2020)
+
+-deploying proxy
+  -create s3 bucket for our proxy server or we can add a file to our existing bucket from our service
+  -create a new ec2 instance for our proxy server and dont forget to add the port 3000 for our proxy
+  -connect to instance through own terminal
+    -go to root directory that holds our .pem file
+    -chmod 600 fileName
+    -ssh -i fileName ec2-user@ip address link
+  -install node
+  -link new s3 bucket to instance
+  -npm install dependencies
+  -change src tags from localhosts to each of our services's IP and port
