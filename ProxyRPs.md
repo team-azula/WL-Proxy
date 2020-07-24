@@ -8,8 +8,8 @@
 
 ### New Relic Meter Results
 
-![](https://imgur.com/T5juYyt)
+![image](https://imgur.com/T5juYyt)
 
 
 #### Loader-io Results
-![](https://imgur.com/6jswYPr)
+![image](https://imgur.com/6jswYPr)
