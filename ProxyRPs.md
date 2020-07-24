@@ -3,7 +3,7 @@
 ### Load Testing Config
 
 > #### Testing criteria:
-![]()
+![image](https://i.imgur.com/VrOZZ8r.png)
 
 
 ### New Relic Meter Results
