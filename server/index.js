@@ -1,3 +1,4 @@
+const nr = require('newrelic');
 const express = require('express');
 const path = require('path');
 
@@ -13,6 +14,15 @@ app.use(express.static(path.join(__dirname, '../client')));
 //app.get('/:id', (req, res) => {
 //  res.sendFile(path.join(__dirname, '../client/dist', 'index.html'));
 //});
+
+app.get('/loaderio-ca6ed2380dc080d38bc86360315d1130/', (req, res) => {
+  res.send('loaderio-ca6ed2380dc080d38bc86360315d1130')
+})
+
+//app.get('./bundle.js/loaderio-ca6ed2380dc080d38bc86360315d1130/', (req, res) => {
+//  res.send('loaderio-ca6ed2380dc080d38bc86360315d1130')
+//})
+
 
 
 app.get('./bundle.js/:3004', (req, res) => {
